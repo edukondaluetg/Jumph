@@ -45,14 +45,14 @@
  </target>
 
  <target name="copy-parameters" description="Copy parameters.yml file">
-  <exec executable="cp" failonerror="true">
+  <exec executable="cp" failonerror="false">
    <arg path="app/config/parameters.yml.dist" />
    <arg path="app/config/parameters.yml" />
   </exec>
  </target>
 
  <target name="composer" description="Installing composer dependencies">
-  <exec executable="composer" failonerror="true">
+  <exec executable="composer" failonerror="false">
    <arg value="install" />
    <arg value="--dev" />
    <arg value="--prefer-dist" />
@@ -63,13 +63,13 @@
  </target>
 
  <target name="bower" description="Installing bower dependencies">
-  <exec executable="bower" failonerror="true">
+  <exec executable="bower" failonerror="false">
    <arg value="install" />
   </exec>
  </target>
 
  <target name="lint" description="Perform syntax check of sourcecode files">
-  <apply executable="php" failonerror="true">
+  <apply executable="php" failonerror="false">
    <arg value="-l" />
 
    <fileset dir="${basedir}/src">
@@ -176,7 +176,7 @@
  <target name="phpunit"
          depends="prepare"
          description="Run unit tests with PHPUnit">
-  <exec executable="${toolsdir}phpunit" failonerror="true">
+  <exec executable="${toolsdir}phpunit" failonerror="false">
    <arg value="--configuration"/>
    <arg path="${basedir}/build/phpunit.xml"/>
   </exec>
